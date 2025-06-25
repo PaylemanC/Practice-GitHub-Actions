@@ -6,10 +6,10 @@ on:
     types: 
       - created
 
-  jobs: 
-    issue_job:
-      runs-on: ubuntu-latest
+jobs: 
+  issue_job:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Issue opened
-          run: echo "Issue opened successfully"
+    steps:
+      - name: Issue opened
+        run: echo "Issue opened successfully"
