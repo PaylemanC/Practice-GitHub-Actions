@@ -13,6 +13,3 @@ on:
       steps:
         - name: Issue opened
           run: echo "Issue opened successfully"
-          
-        - name: github.event JSON details
-          run: echo "Issue details: ${{ toJson(github.event.issue) }}"
