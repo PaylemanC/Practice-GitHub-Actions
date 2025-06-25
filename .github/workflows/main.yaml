@@ -1,6 +1,9 @@
 name: First example
 
-on: push 
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   first_job:
@@ -9,3 +12,10 @@ jobs:
     steps:
       - name: Hola Mundo 
         run: echo "Hola mundo"
+
+  second_job: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola Mundo 2
+        run: echo "Hola mundo 2"
