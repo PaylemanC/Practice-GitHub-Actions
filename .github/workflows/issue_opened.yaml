@@ -3,7 +3,7 @@ run-name: Someone has opened an issue!
 
 on: 
   issues:
-    types: [created]
+    types: [opened]
 
 jobs: 
   issue_job:
