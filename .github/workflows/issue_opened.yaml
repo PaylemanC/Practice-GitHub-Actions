@@ -1,0 +1,23 @@
+name: Issue is opened 
+
+on: 
+  issues:
+    types: 
+      - created
+
+  jobs: 
+    issue_job:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Issue opened
+          run: echo "Issue ${{ github.event.issue.number }} opened by ${{ github.event.issue.user }}: ${{ github.event.issue.title }}"
+
+        - name: Finish
+          run: echo "Issue opened successfully"
+
+        - name: github.event details
+          run: echo "Event details: ${{ github.event }}"
+
+        - name: github.event JSON details
+          run: echo "Issue details: ${{ toJson(github.event.issue) }}"
