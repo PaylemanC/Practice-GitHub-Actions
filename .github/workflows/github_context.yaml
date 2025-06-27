@@ -7,17 +7,33 @@ on:
       - github-context
 
 jobs: 
-  Explore-GitHub-Context:
+  Display GitHub Contexts:
       runs-on: ubuntu-latest
       steps:
-        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-        - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-        - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}"
-        - name: Check out repository code
+        - name: github.event_name 
+        - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+
+        - name: github.ref & github.repository - Branch and username/repository
+        - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}"
+
+        - name: github.actor & github.actor_id - Username & ID of the person who triggered the workflow
+          run: echo "The username of the person who triggered this workflow is ${{ github.actor }} - ${{ github.actor_id }}."
+
+        - name: Check out repository code & github.action: name of the action
           uses: actions/checkout@v4
-        - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-        - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-        - name: List files in the repository
+        - run: |
+            echo "Repository has been cloned to the runner with actions/checkout@v4. Also, the name of the action currently running: ${{ github.action }}"
+
+        - name: github.api_url - API URL of the repository
+          run: echo "The API URL of this repository is ${{ github.api_url }}."
+
+        - name: github.workspace - List files in the repository
           run: |
             ls ${{ github.workspace }}
-        - run: echo "🍏 This job's status is ${{ job.status }}."
+
+        - name: github.action 
+        - run: echo "The ID of the step currently running is ${{ github.action }}."
+        
+        - name: Job Status
+        - run: echo "🍏 This job's status is job.status: ${{ job.status }}."
+
