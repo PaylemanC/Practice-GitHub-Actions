@@ -19,12 +19,14 @@ jobs:
         with:
           name: test-artifact
           path: test.log
+          retention-days: 1
 
-      - name: Create an artifact file 2
-        run: echo "This is a sample artifact log file." > test-2.log
+  download_artifact:
+    needs: upload_artifact
+    runs-on: ubuntu-latest1
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          name: test-artifact-2
-          path: test-2.log
+          name: test-artifact
