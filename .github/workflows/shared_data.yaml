@@ -1,0 +1,21 @@
+name: Share Data
+run-name: ${{ github.actor }} is learning sharing data between jobs
+
+on: 
+  push:
+    branches:
+      - shared_data
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: The GITHUB_OUTPUT file 1
+        run: echo $GITHUB_OUTPUT
+
+      - name: Sharing variable in GITHUB_OUTPUT
+        run: echo "my_variable=Hello GitHub Actions" >> $GITHUB_OUTPUT
+
+      - name: The GITHUB_OUTPUT file 2
+        run: echo $GITHUB_OUTPUT
