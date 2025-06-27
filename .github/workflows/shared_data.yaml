@@ -15,7 +15,8 @@ jobs:
         run: echo $GITHUB_OUTPUT
 
       - name: Sharing variable in GITHUB_OUTPUT
+        id: set_variable_step
         run: echo "my_variable=Hello GitHub Actions" >> $GITHUB_OUTPUT
 
-      - name: The GITHUB_OUTPUT file 2
-        run: echo $GITHUB_OUTPUT
+      - name: Accessing the previous variable with step context outputs, steps.ID_step
+        run: echo "My variable is ${{ steps.set_variable_step.outputs.my_variable }}"
