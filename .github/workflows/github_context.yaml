@@ -19,10 +19,10 @@ jobs:
         - name: github.actor & github.actor_id - Username & ID of the person who triggered the workflow
           run: echo "The username of the person who triggered this workflow is ${{ github.actor }} - ${{ github.actor_id }}."
 
-        - name: Check out repository code & github.action: name of the action
+        - name: Check out repository code
           uses: actions/checkout@v4
         - run: |
-            echo "Repository has been cloned to the runner with actions/checkout@v4. Also, the name of the action currently running: ${{ github.action }}"
+            echo "Repository has been cloned to the runner with actions/checkout@v4"
 
         - name: github.api_url - API URL of the repository
           run: echo "The API URL of this repository is ${{ github.api_url }}."
