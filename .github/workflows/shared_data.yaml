@@ -1,5 +1,5 @@
 name: Share Data
-run-name: ${{ github.actor }} is learning sharing data between steps
+run-name: ${{ github.actor }} is learning sharing data between JOBS
 
 on: 
   push:
@@ -9,6 +9,9 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
+
+    outputs: 
+      my_variable: ${{ steps.set_variable_step.outputs.my_variable }}
 
     steps:
       - name: The GITHUB_OUTPUT file 1
@@ -25,3 +28,20 @@ jobs:
 
       - name: Check outputs
         run: echo "${{ toJSON(steps.set_variable_step.outputs) }}"
+
+  second_job:
+    needs: first_job
+    runs-on: ubuntu-latest
+
+    env: 
+      FIRST_JOB_VARIABLE: ${{ needs.first_job.outputs.my_variable }}
+
+    steps:
+      - name: The first_job outputs
+        run: echo "The first job output object to JSON is ${{ toJSON(needs.first_job.outputs)}}"
+
+      - name: The variable from the first job is... $FIRST_JOB_VARIABLE from env
+        run: echo "$FIRST_JOB_VARIABLE"
+
+      - name: Usually, the variable is stored in the environment. But you can also access it with the needs context directly
+        run: echo "${{ needs.first_job.outputs.my_variable }}"
