@@ -1,0 +1,21 @@
+name: Artifacts
+run-name: ${{ github.actor }} is learning about artifacts
+
+on:
+  push:
+    branches: 
+        - artifacts
+
+jobs:
+  upload_artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create an artifact file
+        run: echo "This is a sample artifact log file." > test.log
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifact
+          path: test.log
