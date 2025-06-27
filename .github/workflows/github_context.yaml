@@ -33,10 +33,3 @@ jobs:
 
         - name: github.action 
         - run: echo "The ID of the step currently running is ${{ github.action }}."
-        
-  Final Result:
-      runs-on: ubuntu-latest
-      if: ${{ always() }}
-      steps:
-        - name: job.status
-        - run: echo "This job's status is: ${{ job.status }}."
