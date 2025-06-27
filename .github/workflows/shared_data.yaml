@@ -24,4 +24,4 @@ jobs:
           echo "El resultado del anterior step es ${{ steps.set_variable_step.conclusion}}"
 
       - name: Check outputs
-        run: echo "${{ steps.set_variable_step.outputs }}"
+        run: echo "${{ toJSON(steps.set_variable_step.outputs) }}"
