@@ -19,3 +19,12 @@ jobs:
         with:
           name: test-artifact
           path: test.log
+
+      - name: Create an artifact file 2
+        run: echo "This is a sample artifact log file." > test-2.log
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifact-2
+          path: test-2.log
