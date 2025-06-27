@@ -1,5 +1,5 @@
 name: Share Data
-run-name: ${{ github.actor }} is learning sharing data between JOBS
+run-name: ${{ github.actor }} is learning sharing data
 
 on: 
   push:
