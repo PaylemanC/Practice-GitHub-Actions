@@ -7,14 +7,14 @@ on:
       - github-context
 
 jobs: 
-  Display GitHub Contexts:
+  Display_GitHub_Contexts:
       runs-on: ubuntu-latest
       steps:
         - name: github.event_name 
-        - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
 
         - name: github.ref & github.repository - Branch and username/repository
-        - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}"
+          run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}"
 
         - name: github.actor & github.actor_id - Username & ID of the person who triggered the workflow
           run: echo "The username of the person who triggered this workflow is ${{ github.actor }} - ${{ github.actor_id }}."
@@ -32,4 +32,6 @@ jobs:
             ls ${{ github.workspace }}
 
         - name: github.action 
-        - run: echo "The ID of the step currently running is ${{ github.action }}."
+          run: echo "The ID of the step currently running is ${{ github.action }}."
+
+        - run: echo "🍏 This job's status is ${{ job.status }}."
