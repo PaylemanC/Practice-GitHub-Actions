@@ -1,0 +1,24 @@
+name: Cache
+run-name: I'm learning caching
+
+on:
+  push:
+    branches:
+        - cache
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Download repository
+              uses: actions/checkout@v2
+
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.8'
+
+            - name: Test script
+              run: python script.py
+            
