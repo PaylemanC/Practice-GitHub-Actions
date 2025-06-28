@@ -12,7 +12,7 @@ def main():
     print(df)
 
     assert len(df) == 3, "DataFrame does not have 3 rows"
-    print("Test passed!")
+    print("Test passed! With Actions cache ;)")
 
 if __name__ == "__main__":
     main()
